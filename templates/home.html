@@ -1,0 +1,164 @@
+<div class="body">
+    <section class="filter-features">
+                
+                
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                        
+                                <h1>SPARGO TECHNOLOGY</h1>
+                                <h3>Increase revenues and enhance the attendee and exhibitor experience at your event.</h3>
+                            
+
+                        <div id="content-anchor"></div>
+                        <div id="sticky-phantom"></div>
+
+                            <div id="sticky">
+                            <div class="filter-toggle-bar">
+
+                                    <div class="row">
+                        
+                                        <div class="col-sm-3 highlight-toggle">
+                                            <a role="button" href="#filterCollapse" id="filter-toggle" class="filter-toggle-item collapsed"><strong>Filter By Type</strong></a>
+                                        </div>
+                                       <div class="mobile-container">
+                                        <div class="col-sm-3 col-xs-4 border-left">
+                                            <a class="filter-toggle-item filter-type1 filter-reg" ng-click="myFilter = filterReg"><span>Registration</span> 
+                                                <i class="fa fa-id-card-o"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-4 border-left">
+                                            <a class="filter-toggle-item filter-type1 filter-hou" ng-click="myFilter = filterHou"><span>Housing</span> <i class="fa fa-hotel"></i></a>
+                                        </div>
+                                            <div class="col-sm-3 col-xs-4 border-left">
+                                                <a class="filter-toggle-item border-right filter-type1 filter-all active"  id="clear-filter" ng-click="myFilter = ''"><span>Combined </span> <i class="fa fa-id-card-o" style="padding:0;"></i> + <i class="fa fa-hotel" style="padding:0;"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div> 
+                            <div class="hidden" id="filterCollapse">
+                                <div class="row">
+                                    <div class="col-sm-11">
+                                        <h5>Filter by specific feature types below:</h5>
+                                    </div>
+                                    <div class="col-sm-1 text-right">
+                                        <a class="filter-type2 close-filter">Close <i class="fa fa-times"></i></a>
+                                    </div>
+                                </div>
+                                
+
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <a ng-click="myFilter2 = null" class="btn btn-filter filter-type2 all-filter active" data-toggle="collapse"  href="#filterCollapse">No Filter</a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                 <a ng-click="myFilter2 = {ID: 1}" class="btn btn-filter filter-type2 widgets-filter" data-toggle="collapse"  href="#filterCollapse">Website Widgets</a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a ng-click="myFilter2 = {ID: 2}" class="btn btn-filter filter-type2 onsite-filter" data-toggle="collapse"  href="#filterCollapse">Onsite Services</a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                 <a ng-click="myFilter2 = {ID: 3}" class="btn btn-filter filter-type2 badges-filter" data-toggle="collapse"  href="#filterCollapse">Badges & Tickets</a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <a ng-click="myFilter2 = {ID: 4}" class="btn btn-filter filter-type2 system-filter" data-toggle="collapse"  href="#filterCollapse">System Integrations</a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                               <a ng-click="myFilter2 = {ID: 5}" class="btn btn-filter filter-type2 marketing-filter" data-toggle="collapse"  href="#filterCollapse">Marketing</a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a ng-click="myFilter2 = {ID: 6}" class="btn btn-filter filter-type2 reporting-filter" data-toggle="collapse"  href="#filterCollapse">Reporting</a>
+                                            </div>
+                                        </div>
+
+                            </div>
+                        </div>
+                </div>
+           </div>
+                        </div>
+        </section>
+        
+
+        <div class="container card-container">
+            
+            <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6"  ng-animate="'animate'" ng-repeat="feature in (fileredFeatures = ( allfeatures | orderBy:indexNum | filter:myFilter| filter:myFilter2))" ng-cloak>
+                    
+
+                    <a class="card-wrap" ng-click="open(feature, $index)">
+                        
+                        <div class="card-hover"></div>
+                        <div class="img-wrap"><img src='{{ feature.image }}' class="img-responsive" /></div>
+                        
+                        <div class="card-label">
+
+                                    <p class="trim-length">{{ feature.name }}</p>
+
+                                    <hr class="card-hr" />
+                                            
+                                       
+
+                                            <p ng-bind-html="feature.description" class="trim-length-description font-medium"></p>
+                                        
+                                            
+
+                            </div>
+                        <div class="type-label"><span class="feature-type {{ feature.type }}">{{ feature.type }}</span></div>
+                       
+                    </a>
+                    
+                     </div>
+                </div>
+                     <!--MODAL WINDOW--> 
+                <script type="text/ng-template" id="myModalContent.html">
+                    <div class="modal-header">
+                        <button type="button" class="close" ng-click="cancel()" data-dismiss="modal"><i class="fa fa-times fa-2x"></i></button>
+                        <h3 class="text-center">{{ feature.name }}</h3>
+                    
+                    </div>
+                    
+                    
+                    <div class="modal-body">
+
+
+                    <div class="container">
+                                    <img src='{{ feature.image }}' class="img-responsive" style="margin:0 auto;" />
+                                    <p ng-bind-html="feature.description"></p>
+                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p><strong>Category:</strong></p> 
+                                            <p> {{ feature.type }} </p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p><strong>Used In:</strong></p>
+                                            <p>{{ feature.category }}</a></p>
+                                        </div>
+
+                    </div>
+                           
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-6 text-left">
+                                    <a class="previous" ng-click="showPrev(t, $index)"><i class="fa fa-arrow-left"></i> Prev</a>
+                                </div>
+                                <div class="col-sm-3 col-sm-offset-6 col-xs-6 text-right">
+                                    <a class="next" ng-click="showNext(t, $index)">Next <i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </script>
+        </div>
+        </div>
+<!-- Modal window that loads with options for show type (ie. reg, housing, or combined) - THIS HAS BEEN REMOVED      
+<script src="js/select-type-splash.html"></script>--> 
+
+<!-- jQuery to toggle active states of filters -->
+<script src="js/filter-control.js"></script>
