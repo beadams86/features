@@ -1,3 +1,3 @@
 # SPARGO Product Features
 SPARGO Features
-Built with AngularJS 1.3 
+Built with AngularJS 1.2 
